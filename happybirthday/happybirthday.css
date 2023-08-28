@@ -1,0 +1,72 @@
+/* @font-face {
+    font-family: 'tf2secondary';
+    src: url('https://onepunchmanatee.github.io/CTK303-main/happybirthday/tf2secondary-webfont.woff2') format('woff2'),
+         url('https://onepunchmanatee.github.io/CTK303-main/happybirthday/tf2secondary-webfont.woff') format('woff');
+    src: url('tf2secondary-webfont.woff2') format('woff2'),
+         url('tf2secondary-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+@font-face {
+    font-family: "tf2build";
+    src: url('https://onepunchmanatee.github.io/CTK303-main/happybirthday/tf2build.woff2') format('woff2');
+    src: url('tf2build.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: lavenderblush;
+}
+
+#wrapper {
+    margin: 1em auto;
+    padding: 0;
+    width: 80%;
+    border: 1px;
+    background-color: #18233D;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    border-radius: 30px;
+    position: relative;
+  }
+
+  #soldierfromtitanfall2 {
+    height: auto;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    transition: box-shadow .3s ease;
+    /*pointer-events: none;*/
+  }
+
+  /*tried to get it to mask out the transparent areas, but it didn't work so it still looks pretty jank*/
+  #soldierfromtitanfall2:hover{
+    transform: scale(1.1); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, .3); 
+  }
+
+  #video {
+    grid-column: span 12;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    border: none;
+  }
+
+  h1 {
+    grid-column: span 12;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'tf2build', serif;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+    color: #FFFFCC;
+    letter-spacing: 2px; 
+    text-shadow:
+        -1px -1px 0 #000, 
+         1px -1px 0 #000, 
+        -1px  1px 0 #000, 
+         1px  1px 0 #000, 
+         4px 4px 4px rgba(0, 0, 0, 0.4);
+  }

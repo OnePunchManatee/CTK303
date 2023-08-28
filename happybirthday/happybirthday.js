@@ -1,5 +1,4 @@
 let state = 0;
-
 let temp = -1;
 let solly1;
 let solly2;
@@ -39,8 +38,6 @@ let sollyLines = [];
 document.addEventListener("DOMContentLoaded", function () {
     let image = document.getElementById("soldierfromtitanfall2"); 
     image.addEventListener("click", playSoundOnClick);
-    // audioFiles = document.querySelectorAll(".audio");
-    // audioFiles = document.getElementByClass(".audio");
     solly1 = document.getElementById("audio1");
     solly2 = document.getElementById("audio2");
     solly3 = document.getElementById("audio3");
@@ -59,15 +56,16 @@ document.addEventListener("DOMContentLoaded", function () {
     //     audio.pause();
     //     audio.currentTime = 0;
     // });
-    temp++;
+    
     console.log(state);
     console.log(sollyLines[state]);
     sollyLines[state].play();
     //console.log(sollyLines[state]);
     //let testaudio = new Audio("soldier1.mp3");
     //testaudio.play();
-    
-    state+=1;
+
+    temp++;
+    state++;
     state%=sollyLines.length;
     temp%=sollyLines.length;
     // console.log(sollyLines.length);

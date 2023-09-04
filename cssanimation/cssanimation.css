@@ -158,10 +158,10 @@ h1 {
 
 #autoplaybaniscringe {
   z-index: -99;
-  padding-top: 30%;
+  /* padding-top: 30%;
   padding-bottom: 40%;
   padding-left: 100%;
   padding-right: 100%;
   background-color: white;
-  opacity: 0;
+  opacity: 0; */
 }

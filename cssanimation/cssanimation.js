@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     confirm = document.getElementById("autoplaybaniscringe");
     confirm.addEventListener("click", function(){
         hypnodrone.play();
-        confirm.style.zIndex = "-99";
         
     });
     manatee.addEventListener("click", function(){

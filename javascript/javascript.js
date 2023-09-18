@@ -10,7 +10,6 @@ function setup() {
   var canvas = createCanvas(1200, 900);
   canvas.parent('EOECanvas');
   noStroke();
-  ellipseMode(CENTER);
   textFont(f1);
   textAlign(CENTER);
 }

@@ -1,17 +1,16 @@
-@font-face {
+/* @font-face {
   font-family: "tf2build";
   src: url("https://onepunchmanatee.github.io/CTK303-main/javascript/tf2build.woff2")
     format("woff2");
   src: url("tf2build.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 #wrapper {
     margin: 1em auto;
     padding: 0;
     width: 80%;
-    border: 1px;
     background-color: #18193D;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -26,8 +25,6 @@
     height: 95%;
     align-items: center;
     justify-content: center;
-    border: 10px red;
     margin: 30px;
-    box-sizing: border-box;
     padding: 15px;
   }

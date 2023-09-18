@@ -2,8 +2,10 @@ let guf = [];
 let state = 0;
 let toggle=false;
 let rei;
+let lilith;
 let f1;
 let tally = 0;
+let gufclear = false;
 
 
 function setup() {
@@ -16,10 +18,12 @@ function setup() {
 
 function preload() {
   rei = loadImage("reihands.png");
+  lilith = loadImage("lilithbend.png");
   f1 = loadFont("tf2build.ttf");
 }
 
 function draw() {
+  if(tally < 666){
   background(24, 25, 61);
   image(rei, 0, 0);
   tally++;
@@ -49,7 +53,7 @@ function draw() {
       text("Enter Gendo's Paradise?", width/2, height/2);
       pop();
       }
-  else { 
+    } else { 
         if(!gufclear){
           for(j = 0; j <guf.length; j++) {
             guf.splice(j, 1000);
@@ -112,6 +116,7 @@ function mouseReleased() {
   toggle = true;
 }
 
+
 class Soul2 {
   // constructor
   constructor() {
@@ -149,3 +154,4 @@ function mouseReleased() {
   state = 1;
   toggle = true;
 }
+

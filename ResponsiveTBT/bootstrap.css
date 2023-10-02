@@ -1,0 +1,44 @@
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'tf2build';
+  src: url('tf2build-webfont.woff2') format('woff2');
+  src: url('tf2build-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'tf2secondary';
+    src: url('tf2secondary-webfont.woff2') format('woff2'),
+         url('tf2secondary-webfont.woff') format('woff');
+    
+    
+    font-weight: normal;
+    font-style: normal;
+}
+
+h5 {
+    font-family: tf2build;
+}
+
+body {
+    font-family: tf2secondary;
+    background-color: #FFF5C9;
+}
+
+.card-body {
+    background-color: #D1C79C;
+}
+
+.card {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.8);
+    transform: scale(1.01);
+}
+
+.bi {
+    font-size: 2rem;
+}

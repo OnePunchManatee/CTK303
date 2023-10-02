@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     carter4 = document.getElementById("carter4");
     carter5 = document.getElementById("carter5");
 
-    carterLines = [carter1, carter2, carter3, carter4, carter5];
+    carterLines = [carter2, carter3, carter4, carter5, carter1];
 
     pancake1 = document.getElementById("pancake1");
     pancake2 = document.getElementById("pancake2");

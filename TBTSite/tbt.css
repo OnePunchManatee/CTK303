@@ -203,13 +203,16 @@ footer p{
 }
 
 #hero img{
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: auto;
 }
 
 #herotext {
+    margin-left: 12%;
+    margin-top: 5rem;
+    scale: 1.25;
     opacity: 0;
     animation: fadeIn 2.5s ease forwards;
     position: absolute;

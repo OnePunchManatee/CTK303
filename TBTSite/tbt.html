@@ -6,17 +6,18 @@
     <link href="tbt.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <nav>
         <a href="tbt.html"><img src="logo.png" alt="logo"></a>
         <ul>
-            <li><a href="tbt.html">Home</a></li>
-            <li><a href="bootstrap.html">Meet the Team</a></li>
+          <li><a href="tbt.html">Home</a></li>
+          <li><a href="bootstrap.html">Meet the Team</a></li>
         </ul>
-        <a href="https://rgl.gg/Public/Team?t=11046&r=40" target="_blank"><img src="rgllogo.png" alt="logo" style="padding-left: 45%;"></a>
-    </nav>
+        <a href="https://rgl.gg/Public/Team?t=11046&r=40" target="_blank"><img src="rgllogo.png" alt="logo" id="rgl"></a>
+      </nav>
     <main>
         <img src="tbtbanner.png">
         <div class="container d-flex align-items-center justify-content-center vh-100 myBorder">
@@ -27,12 +28,12 @@
         </div>
         <div id="herovideo">
             <video autoplay loop muted>
-                <source src="tbtherovideo.mp4" type="video/mp4">
+                <source src="tbtherovideo1.mp4" type="video/mp4">
             </video>
             <div class="dark-overlay"></div>
             <div class="container d-flex align-items-center justify-content-center vh-100 content">
                 <div class="flex-item text-center">
-                    <h1 style="margin-top: 12rem">Who's on the team?</h1>
+                    <h1 id="teamheader">Who's on the team?</h1>
                     <p style="font-family: prof; font-size: 200%; margin-bottom: 0px;">The team is an eclectic collection of TF2 players who were generally either </p>
                     <p style="font-family: prof; font-size: 200%;">roped in by friends or slipped down the MGE-to-Comp Pipeline.</p>
                     <a href="bootstrap.html"><button type="button" class="btn" style="margin-bottom: 6rem">Meet them all</button></a>

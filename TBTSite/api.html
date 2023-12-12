@@ -3,37 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Steam Stats</title>
+    <link rel="icon" type="image/png" href="img/tbtlogosmol.png" sizes="32x32">
+    <link href="api.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Stats</title>
 </head>
-<body>
+<body style="background-color: #AC7BE0;">
 
-<h1>Steam Stats</h1>
+    <nav>
+        <a href="tbt.html"><img src="img/logo.png" alt="logo"></a>
+        <ul>
+          <li><a href="tbt.html">Home</a></li>
+          <li><a href="bootstrap.html">Meet the Team</a></li>
+          <li><a href="api.html">Stats</a></li>
+        </ul>
+        <a href="https://rgl.gg/Public/Team?t=11046&r=40" target="_blank"><img src="img/rgllogo.png" alt="logo" id="rgl"></a>
+      </nav>
+<main class="text-center justify-content-center align-items-center d-flex pt-5 h-100">
+    <div id="wrapper" class="mt-5 d-block">
+        <canvas id="myCanvas"></canvas>
+    </div>
+</main>
+<footer id="stats" class="text-center d-flex justify-content-center align-items-center">
+    <div>
+<h1 class="d-block" id="name"></h1>
 
-<!-- Display area for the value -->
-<p id="buildingDestroyedValue"></p>
+<p id="1"></p>
+<p id="2"></p>
+<p id="3"></p>
+<p id="4"></p>
+<p id="5"></p>
+<p id="6"></p>
+<p id="7"></p>
+<p id="8"></p>
+<p id="9"></p>
 
+<button type="button" id="nextPlayerButton" onclick="incrementIndex()">Next Player</button>
+</div>
+</footer>
 <script>
-// Function to fetch data from the Steam API using crossorigin.me as a proxy
-function fetchData() {
-    // Replace this URL with your actual API endpoint
-    const apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=D6FB41B8DED3FAA0EE531D3EA4ACE31D&steamid=76561198043250628&appid=440';
+    let ids = ['76561198043250628', '76561198096370315', '76561198177893343', '76561198080782829', '76561198000229929', '76561198193207001', '76561198834350355', '76561198185806553', '76561198380423847']; // henree, py, carter, manatee, forty, pancake, fountain, niko, ziixx\
+    let index = 0;
+    let playtimes = [];
+    let names = ['henree', 'pyritefish', 'carter', 'manatee', 'forty', 'pancake', 'fountain', 'niko', 'ziixx'];
+    let color = ['#FF0000', '#FF7F00','#FFFF00', '#7FFF00', '#7FFF00', '#00FF00', '#00FF7F', '#00FFFF', '#007FFF', '#0000FF'];
+    let colorIndex = 0;
+    let svgSize = 25;
 
-    fetch(apiUrl)
+    const canvas = document.getElementById('myCanvas');
+    const wrapper = document.getElementById('wrapper')
+    canvas.width = wrapper.clientWidth;
+    // canvas.height = wrapper.clientHeight;
+    canvas.height = 500;
+
+    
+    
+    function fetchData() {
+        
+        const apiKey = 'D6FB41B8DED3FAA0EE531D3EA4ACE31D';
+        
+        const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${apiKey}&steamid=${ids[index]}&appid=440`;
+        
+        fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            // Extract the desired value
-            const buildingDestroyedValue = data.playerstats.stats.find(stat => stat.name === 'Scout.accum.iBuildingsDestroyed').value;
-
-            // Display the value on the HTML page
-            document.getElementById('buildingDestroyedValue').innerText = `Buildings Destroyed: ${buildingDestroyedValue}`;
+            document.getElementById('name').innerText = names[index];
+            const scoutPlayTime = data.playerstats.stats.find(stat => stat.name === 'Scout.accum.iPlayTime').value/3600;
+            const sollyPlayTime = data.playerstats.stats.find(stat => stat.name === 'Soldier.accum.iPlayTime').value/3600;
+            const pyroPlayTime = data.playerstats.stats.find(stat => stat.name === 'Pyro.accum.iPlayTime').value/3600;
+            const demoPlayTime = data.playerstats.stats.find(stat => stat.name === 'Demoman.accum.iPlayTime').value/3600;
+            const heavyPlayTime = data.playerstats.stats.find(stat => stat.name === 'Heavy.accum.iPlayTime').value/3600;
+            const engiPlayTime = data.playerstats.stats.find(stat => stat.name === 'Engineer.accum.iPlayTime').value/3600;
+            const medicPlayTime = data.playerstats.stats.find(stat => stat.name === 'Medic.accum.iPlayTime').value/3600;
+            const sniperPlayTime = data.playerstats.stats.find(stat => stat.name === 'Sniper.accum.iPlayTime').value/3600;
+            const spyPlayTime = data.playerstats.stats.find(stat => stat.name === 'Spy.accum.iPlayTime').value/3600;
+            document.getElementById('1').innerText = `Scout Playtime: ${Math.round(scoutPlayTime)}`;
+            document.getElementById('2').innerText = `Soldier Playtime: ${Math.round(sollyPlayTime)}`;
+            document.getElementById('3').innerText = `Pyro Playtime: ${Math.round(pyroPlayTime)}`;
+            document.getElementById('4').innerText = `Demo Playtime: ${Math.round(demoPlayTime)}`;
+            document.getElementById('5').innerText = `Pootis Playtime: ${Math.round(heavyPlayTime)}`;
+            document.getElementById('6').innerText = `Engi Playtime: ${Math.round(engiPlayTime)}`;
+            document.getElementById('7').innerText = `Medic Playtime: ${Math.round(medicPlayTime)}`;
+            document.getElementById('8').innerText = `Sniper Playtime: ${Math.round(sniperPlayTime)}`;
+            document.getElementById('9').innerText = `Spy Playtime: ${Math.round(spyPlayTime)}`;
+            playtimes = [scoutPlayTime, sollyPlayTime, pyroPlayTime, demoPlayTime, heavyPlayTime, engiPlayTime, medicPlayTime, sniperPlayTime, spyPlayTime];
+            console.log[playtimes, "!"];
+            let sum = playtimes.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            console.log(sum);
+            playtimes = playtimes.map(value => value / sum * 100);
+            sum = playtimes.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+            console.log(sum);
+            console.log(playtimes);
         })
         .catch(error => console.error('Error fetching data:', error));
-}
+        console.log[playtimes, "!"];
+    }
+    // playtimes = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+    
+    document.addEventListener('DOMContentLoaded', fetchData);
+    const ctx = canvas.getContext('2d');
+    
+    function incrementIndex() {
+        index = (index + 1) % ids.length;
+        fetchData(); 
+        console.log(playtimes);
+        setTimeout(() => {
+            drawPieChart(canvas, playtimes);
+        }, 10);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
-// Call the fetchData function when the page loads
-document.addEventListener('DOMContentLoaded', fetchData);
+    function drawPieChart(canvas, values) {
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = Math.min(centerX, centerY);
+        setTimeout(() => {
+
+
+            values.forEach(value => {
+                console.log(colorIndex);
+                const sliceAngle = (value / 100) * 2 * Math.PI;
+    
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.fillStyle = color[colorIndex];
+                colorIndex++;
+                colorIndex = colorIndex%(color.length-1);
+                ctx.fill();
+                ctx.stroke();
+
+                // const labelAngle = startAngle + sliceAngle / 2;
+                // const labelX = centerX + Math.cos(labelAngle) * (radius * 0.8); // Adjust the factor to control label distance
+                // const labelY = centerY + Math.sin(labelAngle) * (radius * 0.8); // Adjust the factor to control label distance
+
+                // // Draw text label
+                // ctx.fillStyle = 'black'; // Set text color
+                // ctx.font = `20px Arial`;
+                // ctx.textAlign = 'center';
+                // ctx.textBaseline = 'middle';
+                // ctx.fillText(Math.round(value.toString()), labelX, labelY);
+
+                const svgAngle = startAngle + sliceAngle / 2;
+                const svgX = centerX + Math.cos(svgAngle) * (radius * 0.8);
+                const svgY = centerY + Math.sin(svgAngle) * (radius * 0.8);
+
+                // Create and append SVG element
+                const img = new Image();
+                img.src = 'img/scout.svg'; // Replace with the path to your local SVG file
+                img.width = svgSize;
+                img.height = svgSize;
+                img.style.position = 'absolute';
+                img.style.left = `${svgX - svgSize / 2}px`;
+                img.style.top = `${svgY - svgSize / 2}px`;
+
+                document.body.appendChild(img);
+    
+                startAngle += sliceAngle;
+                
+            });
+        }, 1000);
+        let startAngle = 0;
+        
+    }
+
+    let sus = [11, 11, 11, 11, 11, 11, 11, 11, 11];
+
+    setTimeout(() => {
+        drawPieChart(canvas, playtimes);
+    }, 100);
+
 </script>
-
 </body>
 </html>
 

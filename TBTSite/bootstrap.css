@@ -151,7 +151,7 @@ a {
 
   @media (min-width: 768px) {
     nav {
-        text-align: left; /* Align left for larger screens */
+        text-align: left;
     }
 
     #teamheader{
@@ -159,11 +159,11 @@ a {
     }
 
     .indent-left {
-        margin-left: 15%; /* Indent the first image and unordered list from the left */
+        margin-left: 15%;
     }
 
     .indent-right {
-        margin-right: 15%; /* Indent the last image from the right */
+        margin-right: 15%;
     }
     .promo {
         background-size: cover;

@@ -108,7 +108,7 @@ h1 {
 }
 
 .promo {
-    background-image: url("img/sollyspookybanner.png");
+    background-image: url("sollyspookybanner.png");
     background-size: 460%;
     height: width/5;
 }
@@ -225,6 +225,18 @@ footer p{
     position: absolute;
 }
 
+#wrapper {
+    width: 60%;
+    /* border: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#stats {
+    font-family: tf2build;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -236,7 +248,7 @@ footer p{
 
 @media (min-width: 768px) {
     nav {
-        text-align: left;
+        text-align: left; /* Align left for larger screens */
     }
 
     #teamheader{
@@ -244,11 +256,11 @@ footer p{
     }
 
     .indent-left {
-        margin-left: 15%;
+        margin-left: 15%; /* Indent the first image and unordered list from the left */
     }
 
     .indent-right {
-        margin-right: 15%;
+        margin-right: 15%; /* Indent the last image from the right */
     }
     .promo {
         background-size: cover;

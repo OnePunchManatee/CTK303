@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Steam Stats</title>
+</head>
+<body>
+
+<h1>Steam Stats</h1>
+
+<!-- Display area for the value -->
+<p id="buildingDestroyedValue"></p>
+
+<script>
+// Function to fetch data from the Steam API using crossorigin.me as a proxy
+function fetchData() {
+    // Replace this URL with your actual API endpoint
+    const apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=D6FB41B8DED3FAA0EE531D3EA4ACE31D&steamid=76561198043250628&appid=440';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Extract the desired value
+            const buildingDestroyedValue = data.playerstats.stats.find(stat => stat.name === 'Scout.accum.iBuildingsDestroyed').value;
+
+            // Display the value on the HTML page
+            document.getElementById('buildingDestroyedValue').innerText = `Buildings Destroyed: ${buildingDestroyedValue}`;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+// Call the fetchData function when the page loads
+document.addEventListener('DOMContentLoaded', fetchData);
+</script>
+
+</body>
+</html>
+

@@ -44,6 +44,7 @@ nav {
 
 #teamheader {
     margin-top: 5rem;
+    padding-top: -5rem;
 }
 
 nav img {
@@ -124,7 +125,7 @@ h1 {
 
 #herovideo {
     position: relative;
-    height: 60vh;
+    /* height: 60vh; */
     overflow: hidden;
 }
 

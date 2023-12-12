@@ -5,20 +5,17 @@ let nikoLines = [];
 let carterLines = [];
 let fountainLines = [];
 let pancakeLines = [];
+let manateeLines = [];
+let ziixxLines = [];
 let pyTemp = -1;
 let henreeTemp = -1;
-let pyState = 0;
-let henreeState = 0;
 let fortyTemp = -1;
 let fountainTemp = -1;
 let nikoTemp = -1;
 let carterTemp = -1;
-let carterState = 0;
-let nikoState = 0;
-let fortyState = 0;
-let fountainState = 0;
 let pancakeTemp = -1;
-let pancakeState = 0;
+let manateeTemp = -1;
+let ziixxTemp = -1;
 
 document.addEventListener("DOMContentLoaded", function () {
     let py = document.getElementById("pycard"); 
@@ -56,6 +53,21 @@ document.addEventListener("DOMContentLoaded", function () {
         pancakePlaySoundOnClick(pancakeLines)
     });
 
+    let manatee = document.getElementById("manateecard"); 
+    manatee.addEventListener("click", function(){
+        manateePlaySoundOnClick(manateeLines)
+    });
+
+    let ziixx = document.getElementById("ziixxcard"); 
+    ziixx.addEventListener("click", function(){
+        ziixxPlaySoundOnClick(ziixxLines)
+    });
+
+    manatee1 = document.getElementById("manatee1");
+    manateeLines = [manatee1];
+
+    ziixx1 = document.getElementById("ziixx1");
+    ziixxLines = [ziixx1];
 
     py1 = document.getElementById("py1");
     pyLines = [py1];
@@ -131,31 +143,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function henreePlaySoundOnClick(array) {
+        console.log(henreeTemp);
+        console.log(henreeTemp%array.length-1);
         if(henreeTemp != -1){
             array[henreeTemp].pause();
             array[henreeTemp].currentTime = 0;
         }
         henreeTemp++;
-        console.log(henreeState);
-        console.log(array[henreeState]);
-        array[henreeState].play();
-        
-        henreeState+=1;
-        henreeState%=array.length;
-        henreeTemp%=array.length;
+        array[henreeTemp].play();
+        henreeTemp%=array.length-1;
     }
 
 function pyPlaySoundOnClick(array) {
+    pyTemp = 0;
     if(pyTemp != -1){
         array[pyTemp].pause();
         array[pyTemp].currentTime = 0;
+        array[pyTemp].play();
     }
+    if(pyLines.length>1){
     pyTemp++;
-    array[pyState].play();
-    
-    pyState+=1;
-    pyState%=array.length;
-    pyTemp%=array.length;
+    pyTemp%=array.length-1;
+    }
 }
 
 function fountainPlaySoundOnClick(array) {
@@ -164,39 +173,29 @@ function fountainPlaySoundOnClick(array) {
         array[fountainTemp].currentTime = 0;
     }
     fountainTemp++;
-    array[fountainState].play();
-    
-    fountainState+=1;
-    fountainState%=array.length;
-    fountainTemp%=array.length;
+    array[fountainTemp].play();
+    fountainTemp%=array.length-1;
 }
 
 function nikoPlaySoundOnClick(array) {
-    console.log(nikoLines);
-    console.log(nikoTemp + nikoState);
     if(nikoTemp != -1){
         array[nikoTemp].pause();
         array[nikoTemp].currentTime = 0;
     }
     nikoTemp++;
-    array[nikoState].play();
-    
-    nikoState+=1;
-    nikoState%=array.length;
-    nikoTemp%=array.length;
+    array[nikoTemp].play();
+    nikoTemp%=array.length-1;
 }
 
 function fortyPlaySoundOnClick(array) {
+    console.log(fortyLines.length, fortyTemp);
     if(fortyTemp != -1){
         array[fortyTemp].pause();
         array[fortyTemp].currentTime = 0;
     }
     fortyTemp++;
-    array[fortyState].play();
-    
-    fortyState+=1;
-    fortyState%=array.length;
-    fortyTemp%=array.length;
+    array[fortyTemp].play();
+    fortyTemp%=array.length-1;
 }
 
 function carterPlaySoundOnClick(array) {
@@ -206,10 +205,7 @@ function carterPlaySoundOnClick(array) {
     }
     carterTemp++;
     array[carterTemp].play();
-    
-    carterState+=1;
-    carterState%=array.length;
-    carterTemp%=array.length;
+    carterTemp%=array.length-1;
 }
 
 function pancakePlaySoundOnClick(array) {
@@ -219,10 +215,33 @@ function pancakePlaySoundOnClick(array) {
     }
     pancakeTemp++;
     array[pancakeTemp].play();
-    
-    pancakeState+=1;
-    pancakeState%=array.length;
-    pancakeTemp%=array.length;
+    pancakeTemp%=array.length-1;
+}
+
+function manateePlaySoundOnClick(array) {
+    manateeTemp = 0;
+    if(manateeTemp != -1){
+        array[manateeTemp].pause();
+        array[manateeTemp].currentTime = 0;
+        array[manateeTemp].play();
+    }
+    if(manateeLines.length > 1){
+    manateeTemp++;
+    manateeTemp%=array.length-1;
+    }
+}
+
+function ziixxPlaySoundOnClick(array) {
+    ziixxTemp = 0;
+    if(ziixxTemp != -1){
+        array[ziixxTemp].pause();
+        array[ziixxTemp].currentTime = 0;
+        array[ziixxTemp].play();
+    }
+    if(manateeLines.length > 1){
+    ziixxTemp++;
+    ziixxTemp%=array.length-1;
+    }
 }
 
 

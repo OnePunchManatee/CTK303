@@ -121,6 +121,11 @@ h1 {
     background-color: #9168BD;
     color: white;
     font-family: tf2build;
+    transition: background-color 1s ease;
+}
+
+.btn:hover{
+    background-color: #775898;
 }
 
 #herovideo {

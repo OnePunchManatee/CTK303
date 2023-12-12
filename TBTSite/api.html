@@ -24,50 +24,62 @@
       </nav>
 <main class="text-center justify-content-center align-items-center d-flex pt-5 h-100">
     <div id="wrapper" class="mt-5 d-block">
-        <canvas id="myCanvas"></canvas>
+        <canvas id="canvas" style="border: 0px solid pink";></canvas>
     </div>
 </main>
-<footer id="stats" class="text-center d-flex justify-content-center align-items-center">
-    <div>
-<h1 class="d-block" id="name"></h1>
+<footer id="stats" class="grid text-center d-flex justify-content-center align-items-center">
+    <div class="display: inline">
+<h1 class="d-block pt-5" id="name"></h1>
 
-<p id="1"></p>
+<div class = "row"><p id="1"></p>
 <p id="2"></p>
 <p id="3"></p>
 <p id="4"></p>
 <p id="5"></p>
+</div>
+
+<div class="row">
 <p id="6"></p>
 <p id="7"></p>
 <p id="8"></p>
 <p id="9"></p>
+</div>
 
-<button type="button" id="nextPlayerButton" onclick="incrementIndex()">Next Player</button>
+<button type="button" class="btn" style="margin-bottom: 6rem; text-shadow: 1px 1px 6px rgba(63, 63, 63, 0.8);" onclick="incrementIndex()">Next Player</button>
 </div>
 </footer>
 <script>
-    let ids = ['76561198043250628', '76561198096370315', '76561198177893343', '76561198080782829', '76561198000229929', '76561198193207001', '76561198834350355', '76561198185806553', '76561198380423847']; // henree, py, carter, manatee, forty, pancake, fountain, niko, ziixx\
+    let ids = ['76561198043250628', '76561198096370315', '76561198177893343', '76561198080782829', '76561198000229929', '76561198193207001', '76561198834350355', '76561198185806553', '76561198380423847']; // henree, py, carter, manatee, forty, pancake, fountain, niko, ziixx
     let index = 0;
     let playtimes = [];
     let names = ['henree', 'pyritefish', 'carter', 'manatee', 'forty', 'pancake', 'fountain', 'niko', 'ziixx'];
-    let color = ['#FF0000', '#FF7F00','#FFFF00', '#7FFF00', '#7FFF00', '#00FF00', '#00FF7F', '#00FFFF', '#007FFF', '#0000FF'];
+    let color = ['#FDEA87', '#FCD766','#FBBB3F', '#F9A916', '#F89600', '#F89600', '#B46E00', '#966B00', '#795800'];
     let colorIndex = 0;
     let svgSize = 25;
 
-    const canvas = document.getElementById('myCanvas');
+    const canvas = document.getElementById('canvas');
     const wrapper = document.getElementById('wrapper')
     canvas.width = wrapper.clientWidth;
-    // canvas.height = wrapper.clientHeight;
+    canvas.height = canvas.width;
     canvas.height = 500;
-
+    
+    const ctx = canvas.getContext('2d');
+    ctx.font = `20px 'tf2build', sans-serif`;
     
     
     function fetchData() {
+        
+
         
         const apiKey = 'D6FB41B8DED3FAA0EE531D3EA4ACE31D';
         
         const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${apiKey}&steamid=${ids[index]}&appid=440`;
         
-        fetch(apiUrl)
+        fetch(apiUrl, {
+        headers: {
+            // 'Origin': 'http://your-origin.com', // Replace with your actual origin
+        },
+        })
         .then(response => response.json())
         .then(data => {
             document.getElementById('name').innerText = names[index];
@@ -104,7 +116,6 @@
     // playtimes = [1, 1, 1, 1, 1, 1, 1, 1, 1];
     
     document.addEventListener('DOMContentLoaded', fetchData);
-    const ctx = canvas.getContext('2d');
     
     function incrementIndex() {
         index = (index + 1) % ids.length;
@@ -120,8 +131,11 @@
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
         const radius = Math.min(centerX, centerY);
+        let startAngle = 0;
+        let classes = ['scout', 'soldier', 'pyro', 'demo', 'heavy', 'engi', 'medic', 'sniper', 'spy'];
+        let classCounter = 0;
         setTimeout(() => {
-
+        
 
             values.forEach(value => {
                 console.log(colorIndex);
@@ -132,41 +146,65 @@
                 ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
                 ctx.fillStyle = color[colorIndex];
                 colorIndex++;
-                colorIndex = colorIndex%(color.length-1);
+                colorIndex = colorIndex%(color.length);
                 ctx.fill();
                 ctx.stroke();
 
-                // const labelAngle = startAngle + sliceAngle / 2;
-                // const labelX = centerX + Math.cos(labelAngle) * (radius * 0.8); // Adjust the factor to control label distance
-                // const labelY = centerY + Math.sin(labelAngle) * (radius * 0.8); // Adjust the factor to control label distance
-
-                // // Draw text label
-                // ctx.fillStyle = 'black'; // Set text color
-                // ctx.font = `20px Arial`;
-                // ctx.textAlign = 'center';
-                // ctx.textBaseline = 'middle';
-                // ctx.fillText(Math.round(value.toString()), labelX, labelY);
-
+                
                 const svgAngle = startAngle + sliceAngle / 2;
                 const svgX = centerX + Math.cos(svgAngle) * (radius * 0.8);
                 const svgY = centerY + Math.sin(svgAngle) * (radius * 0.8);
 
-                // Create and append SVG element
-                const img = new Image();
-                img.src = 'img/scout.svg'; // Replace with the path to your local SVG file
-                img.width = svgSize;
-                img.height = svgSize;
-                img.style.position = 'absolute';
-                img.style.left = `${svgX - svgSize / 2}px`;
-                img.style.top = `${svgY - svgSize / 2}px`;
+                const labelAngle = startAngle + sliceAngle / 2;
+                const labelX = centerX + Math.cos(labelAngle) * (radius * 0.8);
+                const labelY = centerY + Math.sin(labelAngle) * (radius * 0.8); 
 
-                document.body.appendChild(img);
+                const windowHeight = window.innerHeight;
+
+                // const adjustedX = centerX + svgX;
+                // const adjustedY = centerY + svgY;
+                
+                // const img = new Image();
+                // img.src = 'img/scout.svg';
+                // img.width = svgSize;
+                // img.height = svgSize;
+                // img.style.transformOrigin = 'center';
+                // img.style.position = 'absolute';
+                // img.style.left = `${adjustedX - svgSize/2}px`;
+                // img.style.top = `${adjustedY}px`;
+
+                // document.body.appendChild(img);
+
     
                 startAngle += sliceAngle;
-                
             });
+            values.forEach(value => {
+                const sliceAngle = (value / 100) * 2 * Math.PI;
+
+                
+                const svgAngle = startAngle + sliceAngle / 2;
+                const svgX = centerX + Math.cos(svgAngle) * (radius * 0.8);
+                const svgY = centerY + Math.sin(svgAngle) * (radius * 0.8);
+
+                const labelAngle = startAngle + sliceAngle / 2;
+                const labelX = centerX + Math.cos(labelAngle) * (radius * 0.8);
+                const labelY = centerY + Math.sin(labelAngle) * (radius * 0.8);
+
+                ctx.fillStyle = 'black'; 
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                if(value>2){
+                ctx.fillText(classes[classCounter], labelX, labelY);
+                }
+                classCounter++;
+                const windowHeight = window.innerHeight;
+
+    
+                startAngle += sliceAngle;
+            });
+
         }, 1000);
-        let startAngle = 0;
+        
         
     }
 

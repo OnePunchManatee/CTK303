@@ -200,6 +200,15 @@ p, h1 {
 footer p{
     /* text-shadow: none; */
     padding: 2rem;
+    color: white;
+    font-size:larger;
+    /* caret-color: transparent; */
+    user-select: none;
+}
+
+footer h1{
+    color: #303030;
+    user-select: none;
 }
 
 #hero {
@@ -243,7 +252,9 @@ footer p{
     font-family: tf2build;
 }
 
-
+#rgl {
+    display: none;
+}
 
 @keyframes fadeIn {
     from {
@@ -254,7 +265,8 @@ footer p{
     }
 }
 
-@media (min-width: 768px) {
+
+@media (min-width: 825px) {
     nav {
         text-align: left; /* Align left for larger screens */
     }
@@ -279,6 +291,7 @@ footer p{
     #rgl {
         position: absolute;
         right:15%;
+        display: inline;
     }
     footer img {
         margin-top: 2.6rem;

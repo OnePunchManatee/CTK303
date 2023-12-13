@@ -131,7 +131,7 @@ h1 {
 #herovideo {
     position: relative;
     /* height: 60vh; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 video {

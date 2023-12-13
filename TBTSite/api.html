@@ -92,15 +92,15 @@
             const medicPlayTime = data.playerstats.stats.find(stat => stat.name === 'Medic.accum.iPlayTime').value/3600;
             const sniperPlayTime = data.playerstats.stats.find(stat => stat.name === 'Sniper.accum.iPlayTime').value/3600;
             const spyPlayTime = data.playerstats.stats.find(stat => stat.name === 'Spy.accum.iPlayTime').value/3600;
-            document.getElementById('1').innerText = `Scout Playtime: ${Math.round(scoutPlayTime)}`;
-            document.getElementById('2').innerText = `Soldier Playtime: ${Math.round(sollyPlayTime)}`;
-            document.getElementById('3').innerText = `Pyro Playtime: ${Math.round(pyroPlayTime)}`;
-            document.getElementById('4').innerText = `Demo Playtime: ${Math.round(demoPlayTime)}`;
-            document.getElementById('5').innerText = `Pootis Playtime: ${Math.round(heavyPlayTime)}`;
-            document.getElementById('6').innerText = `Engi Playtime: ${Math.round(engiPlayTime)}`;
-            document.getElementById('7').innerText = `Medic Playtime: ${Math.round(medicPlayTime)}`;
-            document.getElementById('8').innerText = `Sniper Playtime: ${Math.round(sniperPlayTime)}`;
-            document.getElementById('9').innerText = `Spy Playtime: ${Math.round(spyPlayTime)}`;
+            document.getElementById('1').innerText = `Scout Playtime: ${Math.round(scoutPlayTime)} hrs`;
+            document.getElementById('2').innerText = `Soldier Playtime: ${Math.round(sollyPlayTime)} hrs`;
+            document.getElementById('3').innerText = `Pyro Playtime: ${Math.round(pyroPlayTime)} hrs`;
+            document.getElementById('4').innerText = `Demo Playtime: ${Math.round(demoPlayTime)} hrs`;
+            document.getElementById('5').innerText = `Pootis Playtime: ${Math.round(heavyPlayTime)} hrs`;
+            document.getElementById('6').innerText = `Engi Playtime: ${Math.round(engiPlayTime)} hrs`;
+            document.getElementById('7').innerText = `Medic Playtime: ${Math.round(medicPlayTime)} hrs`;
+            document.getElementById('8').innerText = `Sniper Playtime: ${Math.round(sniperPlayTime)} hrs`;
+            document.getElementById('9').innerText = `Spy Playtime: ${Math.round(spyPlayTime)} hrs`;
             playtimes = [scoutPlayTime, sollyPlayTime, pyroPlayTime, demoPlayTime, heavyPlayTime, engiPlayTime, medicPlayTime, sniperPlayTime, spyPlayTime];
             console.log[playtimes, "!"];
             let sum = playtimes.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -123,7 +123,7 @@
         console.log(playtimes);
         setTimeout(() => {
             drawPieChart(canvas, playtimes);
-        }, 10);
+        }, 5);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
@@ -203,7 +203,7 @@
                 startAngle += sliceAngle;
             });
 
-        }, 1000);
+        }, 5);
         
         
     }
@@ -212,7 +212,7 @@
 
     setTimeout(() => {
         drawPieChart(canvas, playtimes);
-    }, 100);
+    }, 5);
 
 </script>
 </body>

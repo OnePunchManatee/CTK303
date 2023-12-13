@@ -1,0 +1,185 @@
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'tf2build';
+  src: url('tf2build-webfont.woff2') format('woff2');
+  src: url('tf2build-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'tf2secondary';
+    src: url('tf2secondary-webfont.woff2') format('woff2'),
+         url('tf2secondary-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.card-img-top{
+    position: relative;
+}
+
+h5 {
+    font-family: tf2build;
+}
+
+body {
+    margin: 0px;
+    font-family: tf2secondary;
+    background-color: #AC7BE0;
+}
+
+.card-body {
+    background-color: #D1C79C;
+}
+
+.card {
+    transition: all 0.7s ease;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    border: 0px solid purple;
+    image-rendering: high-quality;
+}
+
+.list-group-item, .card-body{
+    border-bottom: 1px solid darkgray;
+}
+
+.bi {
+    font-size: 2rem;
+}
+
+nav {
+    background-color: #2C1842;
+    position: fixed;
+    height: 4rem;
+    margin: 0px;
+    width: 100%;
+    font-family: "tf2build";
+    display: flex;
+    align-items: center;
+    /* padding-top: .5rem; */
+    z-index: 2000;
+}
+
+nav img {
+    display: inline;
+    max-height: 3rem;
+    padding-left: 1rem;
+}
+
+nav ul {
+    display: inline;
+    margin: 0px;
+}
+
+nav li {
+    margin-top: -6px;
+    margin-left: 7px;
+    display: inline;
+    padding: 15px;
+}
+
+a:visited, a:hover, a:active {
+    color: white;
+    text-decoration: none;
+    
+}
+
+a:hover {
+    color: lightgray;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 573px;
+    perspective: 1000px;
+    overflow: visible;
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s 0.1s;
+    transform-style: preserve-3d;
+    background-color: white;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    transition-delay: 0s; 
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: rgb(89, 89, 89);
+    align-items: center;
+    align-content: center;
+    display: flex;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .list-group {
+    border-bottom: 1px solid darkgray;
+  }
+
+  #rgl {
+    margin-top: -5px;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+        text-align: left;
+    }
+
+    #teamheader{
+        margin-top: 12rem;
+    }
+
+    .indent-left {
+        margin-left: 15%;
+    }
+
+    .indent-right {
+        margin-right: 15%;
+    }
+    .promo {
+        background-size: cover;
+    }
+    nav img{
+        padding-left: 10rem;
+    }
+    #rgl {
+        position: absolute;
+        right:15%;
+        margin-top: -30px;
+    }
+}
+@media (min-width: 1100px) {
+    #rgl {
+        position: absolute;
+        right:15%;
+    }
+}

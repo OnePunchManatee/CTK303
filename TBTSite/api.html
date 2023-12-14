@@ -75,9 +75,6 @@
         const apiUrl = `https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${apiKey}&steamid=${ids[index]}&appid=440`;
         
         fetch(apiUrl, {
-        headers: {
-            // 'Origin': 'http://your-origin.com', // Replace with your actual origin
-        },
         })
         .then(response => response.json())
         .then(data => {
@@ -212,6 +209,8 @@
     setTimeout(() => {
         drawPieChart(canvas, playtimes);
     }, 5);
+
+    //got the pie chart code off Chat since trig exists now only in the most obscure recesses of my memory
 
 </script>
 </body>

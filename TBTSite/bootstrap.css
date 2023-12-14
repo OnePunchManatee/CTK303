@@ -141,6 +141,8 @@ a {
     transform: rotateY(180deg);
   }
 
+/*flipcard stuff from w3schools*/
+
   .list-group {
     border-bottom: 1px solid darkgray;
   }
